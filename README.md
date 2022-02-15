@@ -1,5 +1,11 @@
 # CfgNgLib
 
+## Introduction
+
+This project was created with the purpose of providing a demo, that could be published into an NPM package.
+
+## Project creation
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11.
 
 Workspace was generated with the command `ng new cfg-ng-lib --no-create-application --directory=.`
