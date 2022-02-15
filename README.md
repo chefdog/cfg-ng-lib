@@ -12,6 +12,48 @@ Workspace was generated with the command `ng new cfg-ng-lib --no-create-applicat
 The lib was generated with `ng generate library cfg-ng-lib`
 
 
+## Library config 
+
+Creating a configurable angular library
+
+### credits
+
+https://www.usefuldev.com/post/Angular:%20Creating%20configurable%20libraries%20with%20angular%20cli
+
+
+### How to create a configurable angular library
+
+1. create a config interface in the lib folder: cfg-ng-lib.config.ts
+```
+export interface CfgNgLibConfig {
+    language: string;
+}
+```
+
+2. add a token const in the lib folder: cfg-ng-lib.config.token.ts
+```
+export const CFG_NG_LIB_CONFIG = new InjectionToken(
+    'CFG_NG_LIB_CONFIG'
+);
+```
+
+3. Modify the lib module:
+Open cfg-ng-lib.module.ts and add the following:
+
+```
+export class CfgNgLibModule { 
+  static forRoot(cfgNgLibConfig: CfgNgLibConfig): ModuleWithProviders<CfgNgLibModule> {
+    return {
+      ngModule: CfgNgLibModule,
+      providers: [
+        { provide: CFG_NG_LIB_CONFIG, useValue: cfgNgLibConfig }
+      ]
+    }
+  };
+}
+```
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
